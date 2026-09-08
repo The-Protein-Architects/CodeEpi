@@ -1,4 +1,4 @@
-# Dedicated CPU-only environment for CodeEpi inference.
+# Dedicated CPU-only environment for CodeEpi prediction.
 # PyTorch and PyTorch Geometric are installed with CPU-only builds.
 name: codeepi-cpu
 
