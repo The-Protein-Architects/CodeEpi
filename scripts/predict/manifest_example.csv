@@ -1,0 +1,4 @@
+name,pdb,ag_fasta,antigen_chain,esmc_ag_pt,seqmap_override
+7xyz,path/data/7xyz.pdb,path/data/7xyz.fasta,A,path/cache/7xyz_esmc.pt,
+8abc,path/data/8abc.pdb,path/data/8abc.fasta,"A,B",path/cache/8abc_esmc.pt,
+7def,path/data/7def.pdb,path/data/7def.fasta,A,path/cache/7def_esmc.pt,path/edits/7def_seqmap.json

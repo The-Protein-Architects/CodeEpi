@@ -1,0 +1,34 @@
+# Dedicated environment for the standalone ESM-C encoder ONLY.
+#
+# Why a separate env: the EvolutionaryScale `esm` client and `fair-esm`
+# (ESM-IF, in the main `codeepi` env) both claim the `esm` import namespace
+# and cannot be co-installed. They also disagree on Python (esm needs 3.12+,
+# codeepi is pinned to 3.10). So ESM-C encoding lives here, prediction stays
+# in `codeepi`, and the two exchange a precomputed .pt on disk.
+#
+# Usage:
+#   conda env create -f environment-esmc.yml
+#   conda activate codeepi-esmc
+#   export ESMC_API_KEY="your_key_here"
+#   python -m codeepi.features.encode_esmc \
+#       --ag_fasta my_antigen.fasta --antigen_chain A --out my_antigen_esmc.pt
+#
+# The printed .pt path is then fed to prediction (in the `codeepi` env) via
+# --esmc_ag_pt.
+name: codeepi-esmc
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10.20
+  - pip=26.0.1
+
+  # Dependencies from esmc_local for compatibility
+  - biopython=1.87
+
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - torch==2.11.0+cpu
+      - esm==3.2.1.post1
+      - httpx

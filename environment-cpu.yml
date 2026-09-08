@@ -1,0 +1,40 @@
+# Dedicated CPU-only environment for CodeEpi inference.
+# PyTorch and PyTorch Geometric are installed with CPU-only builds.
+name: codeepi-cpu
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10.8
+  - pip=26.0.1
+
+  - dssp=4.6.1=np2py310h64a3ab5_0
+  - libmcfp=2.0.1=h171cf75_0
+  - libboost=1.86.0=hd24cca6_5
+  - libboost-python=1.86.0=py310hc563356_5
+
+  # Scientific stack
+  - numpy=1.26.4
+  - scipy=1.11.4
+
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cpu
+      - --find-links https://data.pyg.org/whl/torch-2.1.0+cpu.html
+
+      - scikit-learn==1.7.2
+      - pandas==2.3.3
+      - pyyaml==6.0.3
+      - biopython==1.81
+      - biotite==0.41.2
+      - tqdm
+
+      - torch==2.1.1+cpu
+      - torch-geometric==2.5.3
+      - torch-scatter==2.1.2+pt21cpu
+      - torch-sparse==0.6.18+pt21cpu
+      - torch-cluster==1.6.3+pt21cpu
+
+      # ESM-IF-1 encoder
+      - fair-esm==2.0.0

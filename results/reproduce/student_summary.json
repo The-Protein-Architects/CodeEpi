@@ -1,0 +1,69 @@
+{
+  "model": "CodeEpi",
+  "seeds": [1861, 349, 829, 1361, 661],
+  "split": "test",
+  "n_test_graphs": 132,
+  "n_test_seqres_residues": 36127,
+  "n_test_resolved_residues": 34209,
+  "reporting": "PDB-ATOM (resolved) only: every SEQRES residue with ATOM records in the antigen-only PDB; non-surface resolved positions pinned to probability 0.",
+  "bundle": "checkpoints_CodeEpi_v1.0.tar.gz ",
+  "ensemble_prob": {
+    "protocol": "average per-residue val prob across the 5 seeds -> sweep macro thr on averaged-val macro-MCC (thr_val_search_macro) and micro thr on averaged-val micro-MCC (thr_val_search_micro) -> apply the same thresholds to the averaged test prob.",
+    "thr_val_search_macro": 0.45,
+    "thr_val_search_micro": 0.53,
+    "test_resolved": {
+      "macro_mcc": 0.3746,
+      "macro_f1": 0.4315,
+      "macro_bacc": 0.7112,
+      "macro_agiou": 0.3119,
+      "micro_mcc": 0.3963,
+      "micro_f1": 0.4412,
+      "micro_bacc": 0.7211,
+      "micro_agiou": 0.2831,
+      "micro_auprc": 0.4112,
+      "micro_auroc": 0.8712,
+      "micro_auroc_01": 0.4305
+    },
+    "per_seed_test_at_ensemble_thr": {
+      "protocol": "each seed's own test prob evaluated at the shared ensemble thresholds (macro@0.45 / micro@0.53); mean/std/per_seed across the 5 seeds.",
+      "test_resolved": {
+        "macro_mcc":      {"mean": 0.3558, "std": 0.0036, "per_seed": [0.3568, 0.3558, 0.3601, 0.3502, 0.3560]},
+        "macro_f1":       {"mean": 0.4159, "std": 0.0037, "per_seed": [0.4168, 0.4160, 0.4205, 0.4102, 0.4161]},
+        "macro_bacc":     {"mean": 0.7030, "std": 0.0038, "per_seed": [0.7057, 0.6985, 0.7006, 0.7022, 0.7079]},
+        "macro_agiou":    {"mean": 0.2974, "std": 0.0047, "per_seed": [0.2977, 0.2995, 0.3034, 0.2908, 0.2958]},
+        "micro_mcc":      {"mean": 0.3723, "std": 0.0017, "per_seed": [0.3703, 0.3748, 0.3721, 0.3713, 0.3728]},
+        "micro_f1":       {"mean": 0.4184, "std": 0.0018, "per_seed": [0.4164, 0.4213, 0.4188, 0.4175, 0.4182]},
+        "micro_bacc":     {"mean": 0.7180, "std": 0.0037, "per_seed": [0.7194, 0.7147, 0.7142, 0.7183, 0.7233]},
+        "micro_agiou":    {"mean": 0.2646, "std": 0.0015, "per_seed": [0.2629, 0.2669, 0.2649, 0.2638, 0.2644]},
+        "micro_auprc":    {"mean": 0.3638, "std": 0.0117, "per_seed": [0.3606, 0.3779, 0.3467, 0.3704, 0.3632]},
+        "micro_auroc":    {"mean": 0.8540, "std": 0.0080, "per_seed": [0.8584, 0.8548, 0.8403, 0.8558, 0.8606]},
+        "micro_auroc_01": {"mean": 0.4003, "std": 0.0058, "per_seed": [0.3962, 0.4096, 0.3949, 0.4019, 0.3988]}
+      }
+    }
+  },
+  "per_seed_independent_eval": {
+    "protocol": "each seed picks its own threshold on its own resolved val, then evaluates its own test at that threshold; mean/std/per_seed across the 5 seeds. AUPRC / AUROC / pAUROC@0.1 are threshold-independent and therefore identical to the ensemble-thr block.",
+    "seeds": [1861, 349, 829, 1361, 661],
+    "test_resolved": {
+      "macro_mcc":        {"mean": 0.3593, "std": 0.0031, "per_seed": [0.3640, 0.3602, 0.3593, 0.3570, 0.3562]},
+      "macro_f1":         {"mean": 0.4182, "std": 0.0029, "per_seed": [0.4207, 0.4204, 0.4195, 0.4143, 0.4159]},
+      "macro_bacc":       {"mean": 0.7171, "std": 0.0114, "per_seed": [0.7323, 0.7115, 0.7151, 0.7237, 0.7027]},
+      "macro_agiou":      {"mean": 0.2960, "std": 0.0037, "per_seed": [0.2938, 0.2991, 0.2984, 0.2905, 0.2984]},
+      "micro_mcc":        {"mean": 0.3723, "std": 0.0041, "per_seed": [0.3746, 0.3764, 0.3655, 0.3728, 0.3720]},
+      "micro_f1":         {"mean": 0.4156, "std": 0.0040, "per_seed": [0.4139, 0.4188, 0.4093, 0.4181, 0.4179]},
+      "micro_bacc":       {"mean": 0.7308, "std": 0.0100, "per_seed": [0.7451, 0.7359, 0.7292, 0.7236, 0.7201]},
+      "micro_agiou":      {"mean": 0.2623, "std": 0.0032, "per_seed": [0.2610, 0.2649, 0.2573, 0.2643, 0.2641]},
+      "micro_auprc":      {"mean": 0.3638, "std": 0.0117, "per_seed": [0.3606, 0.3779, 0.3467, 0.3704, 0.3632]},
+      "micro_auroc":      {"mean": 0.8540, "std": 0.0080, "per_seed": [0.8584, 0.8548, 0.8403, 0.8558, 0.8606]},
+      "micro_auroc_01":   {"mean": 0.4003, "std": 0.0059, "per_seed": [0.3962, 0.4096, 0.3949, 0.4019, 0.3988]}
+  }},
+  "sources": {
+    "primary_metrics_json": "results/reproduce/student_5seed_ensemble_metrics.json",
+    "producer_scripts": [
+      "codeepi.evaluate.student_ensemble  (5-seed probability-mean ensemble + shared thr from averaged val; recomputes all metrics in PDB-ATOM/resolved space)"
+    ],
+    "reproduce_script": "scripts/reproduce/reproduce_student_5seed.sh  (retrain 5 seeds from scratch)",
+    "evaluate_script":  "scripts/evaluate/evaluate_student_5seed.sh   (evaluate the 5 released seed ckpts)"
+  },
+  "notes": "PDB-ATOM (resolved) is the only reporting mode: predictions live in the resolved coordinate frame (SEQRES positions with ATOM records; 34209 residues on the test split), non-surface residues are pinned to probability 0 (deterministic true negatives under the fused-surface convention). "
+}

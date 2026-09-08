@@ -1,0 +1,30 @@
+# Local paths for CodeEpi.
+#
+# Copy this file to configs/paths.yaml and edit the values below.
+
+# Prediction and evaluation shell wrappers hard-code the released
+# checkpoint paths under checkpoints_CodeEpi_v1.0/; edit the wrapper if
+# your extracted layout differs.
+
+# Root of a CodeEpi PyG Release v1.0 dataset. Must contain the three
+# subdirectories and README shipped in the archive:
+#
+#     <dataset_root>/
+#         Complex1723/
+#         Antigen1321/
+#         dataset/
+#         full_README.md
+#
+# Recommended default when unpacking the archive under this repository:
+#   dataset_root: data/codeepi_pyg_release_v1.0
+#
+# Alternatively use an absolute path outside the repository:
+#   dataset_root: /path/to/codeepi_pyg_release_v1.0
+dataset_root: data/codeepi_pyg_release_v1.0
+
+# Where trainers write per-run outputs. train_student.py appends a
+# ``seed_<i>/`` subdirectory automatically.
+output_dir: outputs
+
+# Codebook checkpoint consumed by the student and by the evaluator.
+codebook_checkpoint: checkpoints_CodeEpi_v1.0/codebook_4bin.pt

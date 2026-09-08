@@ -1,0 +1,23 @@
+# Train the CodeEpi teacher (per-complex, on codeepi_pyg_release_v1.0/Complex1723).
+# The seed below was randomly selected for training the released teacher model.
+
+model:
+  fusion_type: projected_esmc
+  gnn_hidden: 384
+  gnn_out: 256
+  num_heads: 8
+  ffn_hidden: 512
+  cls_h1: 128
+  cls_h2: 64
+  dropout: 0.1
+
+train:
+  seed: 7876
+  lr: 1.0e-3
+  lr_step: 20
+  lr_gamma: 0.5
+  max_epochs: 100
+  patience: 15
+  batch_size: 2
+  num_workers: 2
+  pos_weight: 8.0

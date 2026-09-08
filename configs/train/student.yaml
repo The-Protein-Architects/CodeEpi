@@ -1,0 +1,33 @@
+# CodeEpi full-student training and reproduction config.
+#
+# Every 5-seed entry point (scripts/train/train_student.sh,
+# scripts/reproduce/reproduce_student_5seed.sh, scripts/sbatch/train_student.sbatch)
+# reads THIS file. 
+
+seeds: [1861, 349, 829, 1361, 661]
+
+model:
+  stem_dim: 511
+  node_dim: 512
+  node_layers: 3
+  edge_dim: 32
+  dropout: 0.4
+  proj_dropout: 0.1
+  head_dropout: 0.1
+  d_proto: 256
+
+train:
+  lr: 1.0e-4
+  lr_min: 1.0e-6
+  weight_decay: 1.0e-5
+  max_epochs: 60
+  patience: 15
+  batch_size: 4
+  num_workers: 0
+  pos_weight: 2.0
+  gamma_neg: 2.0
+  label_smoothing: 0.2
+  ema_decay: 0.9995
+  lam_anchor: 1.0e-4
+  tau_init: 0.5
+  tau_final: 0.05

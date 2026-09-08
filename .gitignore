@@ -1,0 +1,79 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+
+# Local configs with real paths / keys
+configs/paths.yaml
+configs/local*.yaml
+
+# Runtime output
+outputs/
+logs/
+wandb/
+runs/
+
+# Temporary files
+*.log
+*.tmp
+*.out
+
+# Large archives
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+
+# Large intermediates
+*.npy
+*.npz
+*.pkl
+*.jsonl
+
+# Dataset release: keep placeholders, ignore payloads
+release_v1.0/
+data/release_v1.0/
+data/*
+!data/README.md
+!data/.gitkeep
+
+# Checkpoints: keep the layout, ignore the binaries
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+
+checkpoints/*
+!checkpoints/README.md
+!checkpoints/.gitkeep
+!checkpoints/seeds/
+!checkpoints/seeds/.gitkeep
+
+# Model cache
+model_cache/
+.cache/
+.esm/
+
+# Environment / editor
+.env
+.envrc
+.direnv/
+.vscode/
+.idea/
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Tests
+tests/data/
