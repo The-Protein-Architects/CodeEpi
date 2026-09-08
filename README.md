@@ -25,7 +25,7 @@ Choose the matching path below and follow it.
 Clone the repository and install the environment:
 
 ```bash
-git clone https://github.com/<your-org>/CodeEpi.git
+git clone https://github.com/The-Protein-Architects/CodeEpi.git
 cd CodeEpi
 
 conda env create -f environment.yml
